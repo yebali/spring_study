@@ -17,6 +17,22 @@ before_install:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r spring_study *
+  - mkdir -p deploy
+  - mv spring_study.zip deploy/spring_study.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY #travis ci 에 있는 값
+    secret_access_key: $AWS_SECRET_KEY #travis ci 에 있는 값
+    bucket: spring-study-bucket
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private #zip 접근 권한을 private
+    local_dir: deploy #before_deploy에서 생성한 dir
+    wait-until-deployed: true
+
 #CI 실행 완료 시 메일로 알람
 notifications:
   email:
