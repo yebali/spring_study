@@ -39,8 +39,8 @@ deploy:
     bucket: spring-study-bucket
     key: spring_study.zip
     bundle_type: zip
-    application: spring_study #CodeDeploy 애플리케이션 이름
-    deployment_group: spring_study_group #CodeDeploy 애플리케이션 그룹 이름
+    application: spring-study #CodeDeploy 애플리케이션 이름
+    deployment_group: spring-study-group #CodeDeploy 애플리케이션 그룹 이름
     region: ap-northeast-2
     wait-until-deployed: true
 
